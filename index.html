@@ -358,6 +358,31 @@
                     <div class="health-tip">${advice}</div>
                 </div>
             `;
+            
+            // Replace Calculate BMI button with Calculate Again button
+            const calculateBtn = document.querySelector('.calculate-btn');
+            calculateBtn.textContent = 'Calculate Again';
+            calculateBtn.onclick = function(e) {
+                e.preventDefault();
+                resetCalculator();
+            };
+        }
+
+        function resetCalculator() {
+            // Clear input fields
+            document.getElementById('height').value = '';
+            document.getElementById('weight').value = '';
+            
+            // Clear results
+            results.innerHTML = '';
+            
+            // Reset button to original state
+            const calculateBtn = document.querySelector('.calculate-btn');
+            calculateBtn.textContent = 'Calculate BMI';
+            calculateBtn.onclick = null; // Remove the reset onclick handler
+            
+            // Focus on height input for better UX
+            document.getElementById('height').focus();
         }
 
         // Add input animations
